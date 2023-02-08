@@ -23,7 +23,9 @@ export const RestaurantInfo = ({ restaurant = {} }) => {
     name = "Rajesh dai ko chiya pasal",
     address = "bato side ko rukh muni",
     rating = 4,
-    photos = "https://images.pexels.com/photos/260922/pexels-photo-260922.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    photos = [
+      "https://images.pexels.com/photos/260922/pexels-photo-260922.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    ],
     icon,
     openingHours = true,
     isClosedTemporarily,
