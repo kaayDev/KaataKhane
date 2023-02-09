@@ -5,22 +5,23 @@ import styled from "styled-components/native";
 
 const Title = styled.Text`
   padding: 16px;
-  color: red;
+  padding-top: 5;
+  color: ${(props) => props.theme.colors.ui.primary};
 `;
 
 const RestaurantCard = styled(Card)`
   background-color: white;
-  margin: 20px;
+  margin: 5px;
 `;
 
 const RestaurantCardCover = styled(Card.Cover)`
-  padding: 20px;
+  padding: 10px;
   background-color: white;
 `;
 
 export const RestaurantInfo = ({ restaurant = {} }) => {
   const {
-    name = "Rajesh dai ko chiya pasal",
+    name = "Rajesh dai ko coffee pasal",
     address = "bato side ko rukh muni",
     rating = 4,
     photos = [
