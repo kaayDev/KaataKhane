@@ -1,14 +1,18 @@
-import { StyleSheet, Text, View, SafeAreaView, StatusBar } from "react-native";
+import { StyleSheet, StatusBar } from "react-native";
 
-import { Searchbar } from "react-native-paper";
+import { ThemeProvider } from "styled-components/native";
 import { RestaurantsScreen } from "./src/features/restaurant/screens/restaurants.screen";
+
+import { theme } from "./src/infrastructure/theme/";
 
 console.log(StatusBar.currentHeight);
 
 export default function App() {
   return (
     <>
-      <RestaurantsScreen />
+      <ThemeProvider theme={theme}>
+        <RestaurantsScreen />
+      </ThemeProvider>
       <StatusBar style="auto" />
     </>
   );
