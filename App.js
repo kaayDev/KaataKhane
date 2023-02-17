@@ -5,9 +5,26 @@ import { RestaurantsScreen } from "./src/features/restaurant/screens/restaurants
 
 import { theme } from "./src/infrastructure/theme/";
 
+import {
+  useFonts as useOswald,
+  Oswald_400Regular,
+} from "@expo-google-fonts/oswald";
+import { useFonts as useLato, Lato_400Regular } from "@expo-google-fonts/lato";
+
 console.log(StatusBar.currentHeight);
 
 export default function App() {
+  let [oswaldLoaded] = useOswald({
+    Oswald_400Regular,
+  });
+  let [latoLoaded] = useLato({
+    Lato_400Regular,
+  });
+
+  // Prevent rendering until the font has loaded
+  if (!oswaldLoaded || !latoLoaded) {
+    return null;
+  }
   return (
     <>
       <ThemeProvider theme={theme}>
