@@ -7,7 +7,7 @@ import styled from "styled-components/native";
 import { SvgXml } from "react-native-svg";
 import star from "../../../../assets/star";
 import open from "../../../../assets/open";
-import { Spacer } from "../../../components/spacer/spacer.component";
+import { Spacer } from "../../../components/spacer/spacer.components";
 
 const Title = styled.Text`
   padding: ${(props) => props.theme.space[4]};
