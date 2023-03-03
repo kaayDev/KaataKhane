@@ -2,6 +2,7 @@ import { StyleSheet, StatusBar } from "react-native";
 
 import { ThemeProvider } from "styled-components/native";
 import { RestaurantsScreen } from "./src/features/restaurant/screens/restaurants.screen";
+import { Text } from "react-native";
 
 import { theme } from "./src/infrastructure/theme/";
 
@@ -11,7 +12,13 @@ import {
 } from "@expo-google-fonts/oswald";
 import { useFonts as useLato, Lato_400Regular } from "@expo-google-fonts/lato";
 
-console.log(StatusBar.currentHeight);
+import { NavigationContainer } from "@react-navigation/native";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+
+const Tab = createBottomTabNavigator();
+
+const Map = () => <Text>yeta map screen banauxum</Text>;
+const Settings = () => <Text>yeta setting screen banauxum</Text>;
 
 export default function App() {
   let [oswaldLoaded] = useOswald({
@@ -28,7 +35,13 @@ export default function App() {
   return (
     <>
       <ThemeProvider theme={theme}>
-        <RestaurantsScreen />
+        <NavigationContainer>
+          <Tab.Navigator>
+            <Tab.Screen name="Restaurants" component={RestaurantsScreen} />
+            <Tab.Screen name="Map" component={Map} />
+            <Tab.Screen name="Settings" component={Settings} />
+          </Tab.Navigator>
+        </NavigationContainer>
       </ThemeProvider>
       <StatusBar style="auto" />
     </>
