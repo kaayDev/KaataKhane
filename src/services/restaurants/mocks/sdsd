@@ -1,0 +1,6 @@
+Why context ??
+Fetch the information that we need to fetch, getting the information we need to get,
+but then also giving the ability for any level to consume that information.
+
+context provides a way to pass data through the component tree without having
+to pass props down manually at every level.
