@@ -11,6 +11,8 @@ import { RestaurantInfoCard } from "../components/restaurant-info-card.component
 
 import styled from "styled-components/native";
 import { Spacer } from "../../../components/spacer/spacer.components";
+import { useContext } from "react";
+import { RestaurantContext } from "../../../services/restaurants/restaurants.context";
 
 // console.log(StatusBar.currentHeight);
 
@@ -35,34 +37,23 @@ const RestaurantList = styled(FlatList).attrs({
 })``;
 
 export const RestaurantsScreen = () => {
+  const restaurantContext = useContext(RestaurantContext);
+  console.log(restaurantContext);
   return (
-    <>
-      <SafeArea>
-        <SearchContainer>
-          <Searchbar />
-        </SearchContainer>
-        <RestaurantList
-          data={[
-            { name: 1 },
-            { name: 2 },
-            { name: 3 },
-            { name: 4 },
-            { name: 5 },
-            { name: 6 },
-            { name: 7 },
-            { name: 8 },
-            { name: 9 },
-            { name: 10 },
-          ]}
-          renderItem={() => (
-            <>
-              <Spacer position="bottom" size="large" />
-              <RestaurantInfoCard />
-            </>
-          )}
-          keyExtractor={(item) => item.name}
-        />
-      </SafeArea>
-    </>
+    <SafeArea>
+      <SearchContainer>
+        <Searchbar />
+      </SearchContainer>
+      <RestaurantList
+        data={restaurantContext.restaurants}
+        renderItem={() => (
+          <>
+            <Spacer position="bottom" size="large" />
+            <RestaurantInfoCard />
+          </>
+        )}
+        keyExtractor={(item) => item.name}
+      />
+    </SafeArea>
   );
 };

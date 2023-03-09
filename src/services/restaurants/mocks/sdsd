@@ -4,3 +4,30 @@ but then also giving the ability for any level to consume that information.
 
 context provides a way to pass data through the component tree without having
 to pass props down manually at every level.
+
+Promise is like binding the contract that we are going to get
+something in the future
+
+this will return a function internally that has resolve and reject function
+
+Fetch is one of the fetches, a standard that is build into every browser
+
+and what fetch does is, it is an interface around promises that wraps the
+ability to talk to external API
+
+Fetch return in response as json object
+
+json object is a simple javascript that return properties
+
+map() is the function that will itterate over every individual
+restaurant.
+
+map() funciton is a method that allows us to create new array by
+processing each element of an existing array. It allows us to
+transform an array without modifying the original array.
+
+context ko kaam : data lai globally data provide garney
+inside the react application
+
+service ko kaam : to determine what methods we want in
+order to get data from external services
