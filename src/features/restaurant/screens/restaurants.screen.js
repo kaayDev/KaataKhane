@@ -7,22 +7,19 @@ import {
   View,
 } from "react-native";
 
-import { Searchbar, ActivityIndicator, MD2Colors } from "react-native-paper";
+import { ActivityIndicator, MD2Colors } from "react-native-paper";
 import { RestaurantInfoCard } from "../components/restaurant-info-card.component";
 
 import styled from "styled-components/native";
 import { Spacer } from "../../../components/spacer/spacer.components";
 import { useContext } from "react";
 import { RestaurantContext } from "../../../services/restaurants/restaurants.context";
+import { Search } from "../../../services/restaurants/search.components";
 
 // console.log(StatusBar.currentHeight);
 
 const SafeArea = styled(SafeAreaView)`
   flex: 1;
-`;
-
-const SearchContainer = styled.View`
-  padding: ${(props) => props.theme.space[3]};
 `;
 
 const RestaurantListContainer = styled.View`
@@ -55,9 +52,7 @@ export const RestaurantsScreen = () => {
           <Loading size={50} animating={true} color={MD2Colors.orange800} />
         </LoadingContainer>
       )}
-      <SearchContainer>
-        <Searchbar />
-      </SearchContainer>
+      <Search />
       <RestaurantList
         data={restaurants}
         renderItem={({ item }) => {
