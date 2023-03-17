@@ -41,8 +41,9 @@ const LoadingContainer = styled.View`
   left: 50%;
 `;
 
-export const RestaurantsScreen = () => {
+export const RestaurantsScreen = ({ navigation }) => {
   const { isLoading, restaurants, error } = useContext(RestaurantContext);
+  console.log(navigation);
   return (
     <SafeArea>
       {isLoading && (
