@@ -14,9 +14,7 @@ import styled from "styled-components/native";
 import { Spacer } from "../../../components/spacer/spacer.components";
 import { useContext } from "react";
 import { RestaurantContext } from "../../../services/restaurants/restaurants.context";
-import { Search } from "../../../services/restaurants/search.components";
-
-// console.log(StatusBar.currentHeight);
+import { Search } from "../search.components";
 
 const SafeArea = styled(SafeAreaView)`
   flex: 1;

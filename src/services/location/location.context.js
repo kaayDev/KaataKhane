@@ -4,24 +4,29 @@ import { locationRequest, locationTransform } from "./location.service";
 export const LocationContext = createContext();
 
 export const LocationContextProvider = ({ children }) => {
-  const [keyword, setKeyword] = useState("Lalitpur");
+  const [keyword, setKeyword] = useState("Pokhara");
   const [location, setLocation] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
   const onSearch = (searchKeyword) => {
-    console.log(searchKeyword);
     setIsLoading(true);
     setKeyword(searchKeyword);
-    locationRequest(searchKeyword.toLowerCase)
+    if (!searchKeyword.length) {
+      //don't do anything
+      return;
+    }
+    locationRequest(searchKeyword.toLowerCase())
       .then(locationTransform)
       .then((result) => {
         setIsLoading(false);
         setLocation(result);
+        console.log("dddke" + result);
       })
       .catch((error) => {
         setIsLoading(false);
         setError(error);
+        console.log("fghj" + error);
       });
   };
 
