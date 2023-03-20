@@ -1,11 +1,4 @@
-import {
-  StyleSheet,
-  Text,
-  FlatList,
-  SafeAreaView,
-  StatusBar,
-  View,
-} from "react-native";
+import { FlatList, SafeAreaView } from "react-native";
 
 import { ActivityIndicator, MD2Colors } from "react-native-paper";
 import { RestaurantInfoCard } from "../components/restaurant-info-card.component";
@@ -15,6 +8,7 @@ import { Spacer } from "../../../components/spacer/spacer.components";
 import { useContext } from "react";
 import { RestaurantContext } from "../../../services/restaurants/restaurants.context";
 import { Search } from "../search.components";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 const SafeArea = styled(SafeAreaView)`
   flex: 1;
@@ -56,10 +50,16 @@ export const RestaurantsScreen = ({ navigation }) => {
         data={restaurants}
         renderItem={({ item }) => {
           return (
-            <>
-              <Spacer />
-              <RestaurantInfoCard restaurant={item} />
-            </>
+            <TouchableOpacity
+              onPress={() => {
+                navigation.navigate("RestaurantDetail", { restaurant: item });
+              }}
+            >
+              <>
+                <Spacer />
+                <RestaurantInfoCard restaurant={item} />
+              </>
+            </TouchableOpacity>
           );
         }}
         keyExtractor={(item) => item.name}
