@@ -4,6 +4,7 @@ import styled from "styled-components/native";
 import { Text } from "../../../components/typography/text.component";
 import { LocationContext } from "../../../services/location/location.context";
 import { RestaurantContext } from "../../../services/restaurants/restaurants.context";
+import { MapCallout } from "../components/map-callout.component";
 import { Search } from "../components/search.component";
 
 const Map = styled(MapView)`
@@ -11,7 +12,7 @@ const Map = styled(MapView)`
   width: 100%;
 `;
 
-export const MapScreen = () => {
+export const MapScreen = ({ navigation }) => {
   const { location } = useContext(LocationContext);
   const { restaurants = [] } = useContext(RestaurantContext);
 
@@ -46,8 +47,12 @@ export const MapScreen = () => {
                 longitude: restaurant.geometry.location.lng,
               }}
             >
-              <Callout>
-                <Text>hellow there</Text>
+              <Callout
+                onPress={() =>
+                  navigation.navigate("RestaurantDetail", { restaurant })
+                }
+              >
+                <MapCallout restaurant={restaurant} />
               </Callout>
             </Marker>
           );

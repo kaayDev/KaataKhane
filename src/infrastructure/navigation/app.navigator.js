@@ -21,37 +21,29 @@ const TAB_ICON = {
   Settings: "md-settings",
 };
 
-const Settings = () => <Text>yeta setting screen banauxum</Text>;
+const Settings = () => (
+  <SafeArea>
+    <Text>Settings</Text>
+  </SafeArea>
+);
+
+const createScreenOptions = ({ route }) => {
+  const iconName = TAB_ICON[route.name];
+  return {
+    tabBarIcon: ({ size, color }) => (
+      <Ionicons name={iconName} size={size} color={color} />
+    ),
+  };
+};
 
 export const AppNavigator = () => {
-  let [oswaldLoaded] = useOswald({
-    Oswald_400Regular,
-  });
-  let [latoLoaded] = useLato({
-    Lato_400Regular,
-  });
-
-  // Prevent rendering until the font has loaded
-  if (!oswaldLoaded || !latoLoaded) {
-    return null;
-  }
-
-  const createScreenOptions = ({ route }) => {
-    const iconName = TAB_ICON[route.name];
-    return {
-      tabBarIcon: ({ color, size }) => (
-        <Ionicons name={iconName} size={size} color={color} />
-      ),
-    };
-  };
-
   return (
     <NavigationContainer>
       <Tab.Navigator
         screenOptions={createScreenOptions}
         tabBarOptions={{
-          tabBarActiveTintColor: "blue",
-          tabBarInactiveTintColor: "gray",
+          activeTintColor: "tomato",
+          inactiveTintColor: "gray",
         }}
       >
         <Tab.Screen name="Restaurants" component={RestaurantsNavigator} />
