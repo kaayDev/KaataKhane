@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import MapView, { Callout, Marker } from "react-native-maps";
 import styled from "styled-components/native";
-import { Text } from "../../../components/typography/text.component";
 import { LocationContext } from "../../../services/location/location.context";
 import { RestaurantContext } from "../../../services/restaurants/restaurants.context";
 import { MapCallout } from "../components/map-callout.component";
