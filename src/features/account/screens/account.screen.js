@@ -7,6 +7,7 @@ import { AccountContainer } from "../components/account.styles";
 export const AccountScreen = ({ navigation }) => {
   return (
     <AccountBackground>
+      <AccountCover />
       <AccountContainer>
         <Text>Account Screen</Text>
         <Button
@@ -24,7 +25,6 @@ export const AccountScreen = ({ navigation }) => {
           Register
         </Button>
       </AccountContainer>
-      <AccountCover />
     </AccountBackground>
   );
 };

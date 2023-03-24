@@ -1,7 +1,8 @@
 import styled from "styled-components/native";
+import { Text } from "../../../components/typography/text.component";
 
 export const AccountBackground = styled.ImageBackground.attrs({
-  source: require("../../../../assets/account-background.jpg"),
+  source: require("../../../../assets/account-back.jpg"),
 })`
   flex: 1;
   align-item: center;
@@ -19,4 +20,8 @@ export const AccountContainer = styled.View`
 background-color:rgba(255,255,255,0.7)
 padding: ${(props) => props.theme.space[4]}
 margin-top: ${(props) => props.theme.space[2]}
+`;
+
+export const Title = styled(Text)`
+  font-size: 30px;
 `;
