@@ -7,20 +7,25 @@ import {
   AccountBackground,
   AccountContainer,
   AccountCover,
+  AuthButton,
+  AuthInput,
+  ErrorContainer,
   Title,
 } from "../components/account.styles";
+
+import { ActivityIndicator, Colors } from "react-native-paper";
 
 export const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { onLogin, error } = useContext(AuthenticationContext);
+  const { onLogin, isLoading, error } = useContext(AuthenticationContext);
 
   return (
     <AccountBackground>
       <AccountCover />
       <Title>Kata Khane ?</Title>
       <AccountContainer>
-        <TextInput
+        <AuthInput
           label="E-mail"
           value={email}
           textContentType="emailAddress"
@@ -28,7 +33,7 @@ export const LoginScreen = ({ navigation }) => {
           autoCapitalize="none"
           onChangeText={(u) => setEmail(u)}
         />
-        <TextInput
+        <AuthInput
           label="Password"
           value={password}
           textContentType="password"
@@ -37,14 +42,22 @@ export const LoginScreen = ({ navigation }) => {
           onChangeText={(p) => setPassword(p)}
         />
         <Spacer size="large">
-          <Text variant="error">{error}</Text>
+          <ErrorContainer>
+            <Text variant="error">{error}</Text>
+          </ErrorContainer>
         </Spacer>
-        <Button
-          icon="lock-open-outline"
-          onPress={() => onLogin(email, password)}
-        >
-          Login
-        </Button>
+        <Spacer size="large">
+          {!isLoading ? (
+            <AuthButton
+              icon="lock-open-outline"
+              onPress={() => onLogin(email, password)}
+            >
+              Login
+            </AuthButton>
+          ) : (
+            <ActivityIndicator animating={true} color="tomato" />
+          )}
+        </Spacer>
       </AccountContainer>
       <Button onPress={() => navigation.goBack()}>Go Back</Button>
     </AccountBackground>

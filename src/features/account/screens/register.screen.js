@@ -7,6 +7,9 @@ import {
   AccountBackground,
   AccountContainer,
   AccountCover,
+  AuthButton,
+  AuthInput,
+  ErrorContainer,
   Title,
 } from "../components/account.styles";
 
@@ -21,7 +24,7 @@ export const RegisterScreen = ({ navigation }) => {
       <AccountCover />
       <Title>Kata Khane ?</Title>
       <AccountContainer>
-        <TextInput
+        <AuthInput
           label="E-mail"
           value={email}
           textContentType="emailAddress"
@@ -29,7 +32,7 @@ export const RegisterScreen = ({ navigation }) => {
           autoCapitalize="none"
           onChangeText={(u) => setEmail(u)}
         />
-        <TextInput
+        <AuthInput
           label="Password"
           value={password}
           textContentType="password"
@@ -37,7 +40,7 @@ export const RegisterScreen = ({ navigation }) => {
           autoCapitalize="none"
           onChangeText={(p) => setPassword(p)}
         />
-        <TextInput
+        <AuthInput
           label="Repeated Password"
           value={repeatedPassword}
           textContentType="password"
@@ -46,14 +49,16 @@ export const RegisterScreen = ({ navigation }) => {
           onChangeText={(p) => setRepeatedPassword(p)}
         />
         <Spacer size="large">
-          <Text variant="error">{error}</Text>
+          <ErrorContainer>
+            <Text variant="error">{error}</Text>
+          </ErrorContainer>
         </Spacer>
-        <Button
+        <AuthButton
           icon="email"
           onPress={() => onRegister(email, password, repeatedPassword)}
         >
           Register
-        </Button>
+        </AuthButton>
       </AccountContainer>
       <Button onPress={() => navigation.goBack()}>Go Back</Button>
     </AccountBackground>
