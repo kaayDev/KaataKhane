@@ -1,11 +1,12 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useState, useRef } from "react";
 
 import { loginRequest } from "./authentication.service";
 
 import {
-  onAuthStateChanged,
-  createUserWithEmailAndPassword,
   signOut,
+  createUserWithEmailAndPassword,
+  onAuthStateChanged,
+  getAuth,
 } from "firebase/auth";
 
 export const AuthenticationContext = createContext();
@@ -15,7 +16,9 @@ export const AuthenticationContextProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [error, setError] = useState(null);
 
-  onAuthStateChanged((usr) => {
+  const auth = useRef(getAuth()).current;
+
+  onAuthStateChanged(auth, (usr) => {
     if (usr) {
       setUser(usr);
       setIsLoading(false);
@@ -26,41 +29,52 @@ export const AuthenticationContextProvider = ({ children }) => {
 
   const onLogin = (email, password) => {
     setIsLoading(true);
-    loginRequest(email, password)
+    loginRequest(auth, email, password)
       .then((u) => {
         setUser(u);
         setIsLoading(false);
       })
       .catch((e) => {
         setIsLoading(false);
-        setError(e);
+        setError(e.toString());
       });
   };
 
   const onRegister = (email, password, repeatedPassword) => {
     setIsLoading(true);
     if (password !== repeatedPassword) {
-      setError("Error: Password do not match");
+      setError("Error: Passwords do not match");
       return;
     }
-    createUserWithEmailAndPassword(email, password)
+    createUserWithEmailAndPassword(auth, email, password)
       .then((u) => {
         setUser(u);
         setIsLoading(false);
       })
       .catch((e) => {
         setIsLoading(false);
-        setError(e);
+        setError(e.toString());
       });
   };
 
   const onLogout = () => {
-    setUser(null);
-    signOut();
+    signOut(auth).then(() => {
+      setUser(null);
+      setError(null);
+    });
   };
+
   return (
     <AuthenticationContext.Provider
-      value={{ user, isLoading, error, onLogin, onRegister, onLogout }}
+      value={{
+        isAuthenticated: !!user,
+        user,
+        isLoading,
+        error,
+        onLogin,
+        onRegister,
+        onLogout,
+      }}
     >
       {children}
     </AuthenticationContext.Provider>
