@@ -1,19 +1,30 @@
 import React from "react";
-import { Text } from "../../../components/typography/text.component";
+import { Title } from "../components/account.styles";
 import {
   AccountBackground,
   AccountCover,
   AuthButton,
+  AnimationWrapper,
 } from "../components/account.styles";
 import { AccountContainer } from "../components/account.styles";
 import { Spacer } from "../../../components/spacer/spacer.components";
+import LottieView from "lottie-react-native";
 
 export const AccountScreen = ({ navigation }) => {
   return (
     <AccountBackground>
       <AccountCover />
+      <AnimationWrapper>
+        <LottieView
+          key="animation"
+          autoPlay
+          loop
+          resizeMode="cover"
+          source={require("../../../../assets/welcome.json")}
+        />
+      </AnimationWrapper>
+      <Title>Kata Khane</Title>
       <AccountContainer>
-        <Text>Account Screen</Text>
         <AuthButton
           icon="lock-open-outline"
           mode="contained"

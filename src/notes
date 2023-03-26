@@ -12,3 +12,7 @@ then, in step 1 writing project name
 then, in step 2 turnoff enable google analytics
 
 npx expo install firebase
+
+npx expo install lottie-react-native
+it's a mobile library that parse adobe after effects animation exported
+to json and renders them natively
