@@ -3,6 +3,11 @@ import { Text } from "../../../components/typography/text.component";
 import { SafeArea } from "../../../components/utility/safe-area.component";
 import { FavouritesContext } from "../../../services/favourites/favourites.context";
 
+const FavouritesArea = styled(SafeArea)`
+  align-items: center;
+  justify-content: center;
+`;
+
 export const FavouritesScreen = ({ navigation }) => {
   const { favourites } = useContext(FavouritesContext);
   return favourites.length ? (
@@ -26,8 +31,8 @@ export const FavouritesScreen = ({ navigation }) => {
       />
     </SafeArea>
   ) : (
-    <SafeArea style={{ alignItems: "center", justifyContent: "center" }}>
-      <Text>No Favourites Yet</Text>
-    </SafeArea>
+    <FavouritesArea style={{ alignItems: "center", justifyContent: "center" }}>
+      <Text center>No favourites yet</Text>
+    </FavouritesArea>
   );
 };

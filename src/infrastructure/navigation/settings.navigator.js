@@ -1,21 +1,22 @@
 import { createStackNavigator } from "@react-navigation/stack";
 import React from "react";
+import { FavouritesScreen } from "../../features/settings/screen/favourites.screen";
 import { SettingsScreen } from "../../features/settings/screen/setting.screens";
 
-const SettingsStack = createStackNavigator();
+const SettingStack = createStackNavigator();
 
 export const SettingsNavigator = () => {
-  <SettingsStack.Navigator
-    headerMode="screen"
+  <SettingStack.Navigator
+    options="screen"
     screenOptions={{
-      cardStyleInterpolator: cardStyleInterpolator.forHorizontalIOS,
+      cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
     }}
   >
-    <SettingsStack.Screen
+    <SettingStack.Screen
       options={{ header: () => null }}
-      name="Settings"
+      name="Setting"
       component={SettingsScreen}
     />
-    <SettingsStack.Screen name="Favourites" component={() => null} />
-  </SettingsStack.Navigator>;
+    <SettingStack.Screen name="Favourites" component={FavouritesScreen} />
+  </SettingStack.Navigator>;
 };

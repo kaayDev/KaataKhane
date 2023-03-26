@@ -6,6 +6,7 @@ export const FavouritesContext = createContext();
 
 export const FavouritesContextProvider = ({ children }) => {
   const { user } = useContext(AuthenticationContext);
+
   const [favourites, setFavourites] = useState([]);
 
   const saveFavourites = async (value, uid) => {
@@ -13,7 +14,7 @@ export const FavouritesContextProvider = ({ children }) => {
       const jsonValue = JSON.stringify(value);
       await AsyncStorage.setItem(`@favourites-${uid}`, jsonValue);
     } catch (e) {
-      console.log("yo error chahi if favourites store vayena bahen", e);
+      console.log("yo error if favourites not storing", e);
     }
   };
 
@@ -24,9 +25,10 @@ export const FavouritesContextProvider = ({ children }) => {
         setFavourites(JSON.parse(value));
       }
     } catch (e) {
-      console.log("yo eror chahi if faovuortes not loaded", e);
+      console.log("yo error if favourites not loaded", e);
     }
   };
+
   const add = (restaurant) => {
     setFavourites([...favourites, restaurant]);
   };
@@ -37,15 +39,16 @@ export const FavouritesContextProvider = ({ children }) => {
     );
     setFavourites(newFavourites);
   };
+
   useEffect(() => {
     if (user) {
-      loadFavourites(user.id);
+      loadFavourites(user.uid);
     }
   }, [user]);
 
   useEffect(() => {
     if (user) {
-      saveFavourites(user.id);
+      saveFavourites(favourites, user.uid);
     }
   }, [favourites, user]);
 
