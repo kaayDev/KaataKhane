@@ -1,15 +1,19 @@
-import { ActivityIndicator, MD2Colors } from "react-native-paper";
+import React, { useContext, useState } from "react";
+import { FlatList, TouchableOpacity } from "react-native";
+import styled from "styled-components/native";
+import { ActivityIndicator, Colors } from "react-native-paper";
+
+import { SafeArea } from "../../../components/utility/safe-area.component";
+import { Spacer } from "../../../components/spacer/spacer.components";
+
+import { RestaurantsContext } from "../../../services/restaurants/restaurants.context";
+import { FavouritesContext } from "../../../services/favourites/favourites.context";
+
+import { Search } from "../components/search.components";
 import { RestaurantInfoCard } from "../components/restaurant-info-card.component";
 
-import styled from "styled-components/native";
-import { Spacer } from "../../../components/spacer/spacer.components";
-import { useContext, useState } from "react";
-import { RestaurantContext } from "../../../services/restaurants/restaurants.context";
-import { Search } from "../search.components";
-import { TouchableOpacity } from "react-native-gesture-handler";
-import { FavouritesContext } from "../../../services/favourites/favourites.context";
-import { FavouritesBar } from "../../../components/favourites/favourites-bar.component";
-import { SafeArea } from "../../../components/utility/safe-area.component";
+import { FavouritesBar } from "../../../components/favourites/favourites-bar.compoent";
+
 import { RestaurantList } from "../components/restaurant-list.styles";
 
 const Loading = styled(ActivityIndicator)`
@@ -22,7 +26,7 @@ const LoadingContainer = styled.View`
 `;
 
 export const RestaurantsScreen = ({ navigation }) => {
-  const { isLoading, error, restaurants } = useContext(RestaurantContext);
+  const { isLoading, error, restaurants } = useContext(RestaurantsContext);
   const { favourites } = useContext(FavouritesContext);
   const [isToggled, setIsToggled] = useState(false);
   return (

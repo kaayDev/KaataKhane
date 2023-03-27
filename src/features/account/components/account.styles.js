@@ -1,7 +1,7 @@
 import styled from "styled-components/native";
-import { Text } from "../../../components/typography/text.component";
-import { Button, TextInput } from "react-native-paper";
 import { colors } from "../../../infrastructure/theme/colors";
+import { Button, TextInput } from "react-native-paper";
+import { Text } from "../../../components/typography/text.component";
 
 export const AccountBackground = styled.ImageBackground.attrs({
   source: require("../../../../assets/account-back.jpg"),
@@ -25,7 +25,7 @@ margin-top:${(props) => props.theme.space[2]}
 `;
 
 export const AuthButton = styled(Button).attrs({
-  buttonColor: colors.brand.primary,
+  color: colors.brand.primary,
 })`
   padding: ${(props) => props.theme.space[1]};
 `;
@@ -47,9 +47,9 @@ export const ErrorContainer = styled.View`
 `;
 
 export const AnimationWrapper = styled.View`
-  height: 50%;
-  width: 100%;
+  width: 70%;
+  height: 30%;
   position: absolute;
-  top: 40px;
+  top: 110px;
   padding: ${(props) => props.theme.space[2]};
 `;

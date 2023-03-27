@@ -1,6 +1,4 @@
-import React, { createContext, useState, useRef } from "react";
-
-import { loginRequest } from "./authentication.service";
+import React, { useState, createContext, useRef } from "react";
 
 import {
   signOut,
@@ -9,13 +7,14 @@ import {
   getAuth,
 } from "firebase/auth";
 
+import { loginRequest } from "./authentication.service";
+
 export const AuthenticationContext = createContext();
 
 export const AuthenticationContextProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [user, setUser] = useState(null);
   const [error, setError] = useState(null);
-
   const auth = useRef(getAuth()).current;
 
   onAuthStateChanged(auth, (usr) => {
@@ -39,7 +38,6 @@ export const AuthenticationContextProvider = ({ children }) => {
         setError(e.toString());
       });
   };
-
   const onRegister = (email, password, repeatedPassword) => {
     setIsLoading(true);
     if (password !== repeatedPassword) {
@@ -63,7 +61,6 @@ export const AuthenticationContextProvider = ({ children }) => {
       setError(null);
     });
   };
-
   return (
     <AuthenticationContext.Provider
       value={{

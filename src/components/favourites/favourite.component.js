@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
-import { TouchableOpacity } from "react-native";
-import styled from "styled-components";
 import { FavouritesContext } from "../../services/favourites/favourites.context";
-
 import { AntDesign } from "@expo/vector-icons";
+import { TouchableOpacity } from "react-native";
+
+import styled from "styled-components/native";
 
 const FavouriteButton = styled(TouchableOpacity)`
   position: absolute;

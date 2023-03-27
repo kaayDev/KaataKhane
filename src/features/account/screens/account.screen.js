@@ -1,12 +1,13 @@
 import React from "react";
-import { Title } from "../components/account.styles";
 import {
   AccountBackground,
+  AccountContainer,
   AccountCover,
-  AuthButton,
   AnimationWrapper,
+  AuthButton,
+  Title,
 } from "../components/account.styles";
-import { AccountContainer } from "../components/account.styles";
+
 import { Spacer } from "../../../components/spacer/spacer.components";
 import LottieView from "lottie-react-native";
 

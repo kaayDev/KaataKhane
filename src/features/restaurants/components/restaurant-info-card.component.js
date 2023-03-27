@@ -1,26 +1,24 @@
 import React from "react";
-import { View, Image } from "react-native";
-import { Card } from "react-native-paper";
-
-import styled from "styled-components/native";
-import { Text } from "../../../components/typography/text.component";
-
 import { SvgXml } from "react-native-svg";
+
+import { Spacer } from "../../../components/spacer/spacer.components";
+import { Text } from "../../../components/typography/text.component.js";
+
 import star from "../../../../assets/star";
 import open from "../../../../assets/open";
-import { Spacer } from "../../../components/spacer/spacer.components";
-import { Favourite } from "../../../components/favourites/favourite.component";
 
 import {
   RestaurantCard,
   Info,
+  RestaurantCardCover,
+  Section,
+  Rating,
+  SectionEnd,
   Icon,
   Address,
-  RestaurantCardCover,
-  Rating,
-  Section,
-  SectionEnd,
-} from "./restaurant-info.styles";
+} from "./restaurant-info-card.styles";
+
+import { Favourite } from "../../../components/favourites/favourite.component";
 
 export const RestaurantInfoCard = ({ restaurant = {} }) => {
   const {
@@ -37,9 +35,6 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
   } = restaurant;
 
   const ratingArray = Array.from(new Array(Math.floor(rating)));
-
-  // const apple = "asd";
-  // console.log(`${apple}-${placeId}-${rating}`);
 
   return (
     <RestaurantCard>

@@ -3,16 +3,16 @@ import React from "react";
 import styled from "styled-components/native";
 import { Text } from "../typography/text.component";
 
-import WebView from "react-native-webview";
 import { Platform } from "react-native";
+
+import WebView from "react-native-webview";
 
 const CompactImage = styled.Image`
   border-radius: 10px;
   width: 120px;
   height: 100px;
 `;
-
-const CompactWebView = styled(WebView)`
+const CompactWebview = styled(WebView)`
   border-radius: 10px;
   width: 120px;
   height: 100px;
@@ -27,7 +27,7 @@ const Item = styled.View`
 const isAndroid = Platform.OS === "android";
 
 export const CompactRestaurantInfo = ({ restaurant, isMap }) => {
-  const Image = isAndroid && isMap ? CompactWebView : CompactImage;
+  const Image = isAndroid && isMap ? CompactWebview : CompactImage;
   return (
     <Item>
       <Image source={{ uri: restaurant.photos[0] }} />

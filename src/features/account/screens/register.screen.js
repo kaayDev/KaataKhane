@@ -1,7 +1,4 @@
 import React, { useContext, useState } from "react";
-import { Spacer } from "../../../components/spacer/spacer.components";
-import { Text } from "../../../components/typography/text.component";
-import { AuthenticationContext } from "../../../services/authentication/authentication.context";
 import {
   AccountBackground,
   AccountContainer,
@@ -11,6 +8,9 @@ import {
   ErrorContainer,
   Title,
 } from "../components/account.styles";
+import { AuthenticationContext } from "../../../services/authentication/authentication.context";
+import { Spacer } from "../../../components/spacer/spacer.components";
+import { Text } from "../../../components/typography/text.component";
 import { ActivityIndicator, Colors } from "react-native-paper";
 
 export const RegisterScreen = ({ navigation }) => {
